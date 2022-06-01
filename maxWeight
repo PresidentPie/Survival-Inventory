@@ -1,0 +1,13 @@
+--Place this script in server script service
+
+game.Players.PlayerAdded:Connect(function(player)
+	
+	local maxWeight = Instance.new("IntValue",player)
+	maxWeight.Name = "MaxWeight"
+	maxWeight.Value = 300
+	
+	local totalItems = Instance.new("IntValue",player)
+	totalItems.Name = "TotalItems"
+	totalItems.Value = 0
+	
+end)
