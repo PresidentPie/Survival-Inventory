@@ -1,0 +1,7 @@
+--Place this under the ImageButton or textButton that you are using as the template.
+
+script.Parent.MouseButton1Click:Connect(function()
+	
+	script.Parent.Frame.Visible = not script.Parent.Frame.Visible
+	
+end)
