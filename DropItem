@@ -1,0 +1,27 @@
+--Place this script in server script service
+
+local RS = game:GetService("ReplicatedStorage")
+local DropItem = RS.DropItem
+
+DropItem.OnServerEvent:Connect(function(player, amount, item, toDestroy, weight)
+	
+	local Inventory = player.Inventory
+	local totalItems = player.TotalItems
+	local Amount = amount
+	
+	Inventory.Value = Inventory.Value - Amount.Value
+	
+	local offset = Vector3.new(0,0,-2)
+	
+	for i = amount.Value, 1, -1 do
+		totalItems.Value = totalItems.Value - weight.Value
+		local DroppedItem = item:Clone()
+		DroppedItem.Name = item.Name
+		DroppedItem.Parent = game.Workspace
+		DroppedItem.CFrame = player.Character:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(offset)
+		print(player.Name.." dropped A "..item.Name)
+	end
+	
+	toDestroy:Destroy()
+	
+end)
