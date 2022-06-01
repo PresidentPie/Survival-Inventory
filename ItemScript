@@ -1,0 +1,49 @@
+--Place this script under the item you want to be picked up THIS CODE WILL REQUIRE EDITING TO WORK WITH SEPERATE ITEMS!
+
+local prompt = script.Parent.ProximityPrompt
+local RS = game:GetService("ReplicatedStorage")
+
+prompt.Triggered:Connect(function(player)
+	
+	local Inventory = player.Inventory
+	local maxInventory = player.MaxInventory
+	local maxWeight = player.MaxWeight
+	local totalItems = player.TotalItems
+	local InventoryGUI = player.PlayerGui.Inventory.Inventory.ScrollingFrame
+	
+	wait(0.1)
+	
+	if Inventory.Value == maxInventory.Value then
+		print("Inventory is Full!")
+		return
+	end
+	
+	if Inventory.Value ~= maxInventory.Value then
+		print(player.Name.." has picked up a log") --Change "log" to the item that is being picked up
+		script.Parent.Transparency = 1
+		script.Parent.CanCollide = false
+		prompt.Enabled = false
+		
+		local logstack = RS.LogTemplate:Clone() --Change "logstack" to the item stack that will be made and change "LogTemplate" to the item template that will be cloned.
+		logstack.Name = ("LogStack") --Change "logstack" to the item stack that will be made, and change "LogStack" to whatever you want the stack to be named.
+		
+		if InventoryGUI:FindFirstChild("LogStack") == nil then --Change logstack to whatever you named the stack above.
+			logstack.Parent = InventoryGUI --Change logstack to whatever you set the itemstack that will be made to.
+		end
+		
+		if InventoryGUI.LogStack and totalItems.Value >= maxWeight.Value - 50 then --Change LogStack to whatever the item stack you made is named.
+			print("You're encumbered")
+			InventoryGUI.LogStack.Amount.Value = InventoryGUI.LogStack.Amount.Value + 1 --Change LogStack to whatever the item stack you made is named.
+			totalItems.Value = totalItems.Value + 5
+			Inventory.Value = Inventory.Value + 1
+		end
+		
+		if InventoryGUI.LogStack and totalItems.Value <= maxWeight.Value then --Change LogStack to whatever the item stack you made is named.
+			InventoryGUI.LogStack.Amount.Value = InventoryGUI.LogStack.Amount.Value + 1 --Change LogStack to whatever the item stack you made is named.
+			totalItems.Value = totalItems.Value + 5
+			Inventory.Value = Inventory.Value + 1
+		end
+		
+	end
+	
+end)
