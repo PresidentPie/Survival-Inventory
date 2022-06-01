@@ -1,0 +1,7 @@
+--Place this under the amount textlabel under the item template
+
+local player = game.Players.LocalPlayer
+
+while wait() do
+	script.Parent.Text = script.Parent.Parent.Amount.Value
+end
