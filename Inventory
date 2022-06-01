@@ -1,0 +1,15 @@
+--Place this script in ServerScript service
+
+game.Players.PlayerAdded:Connect(function(player)
+	
+	local maxInventory = Instance.new("IntValue",player)
+	maxInventory.Name = "MaxInventory"
+	maxInventory.Value = 30
+	
+	local Inventory = Instance.new("IntValue",player)
+	Inventory.Name = "Inventory"
+	Inventory.Value = 0
+	
+	
+	
+end)
