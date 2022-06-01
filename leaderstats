@@ -1,0 +1,13 @@
+--Place this script in server script service.
+
+game.Players.PlayerAdded:Connect(function(player)
+	
+	local leaderstats = Instance.new("Folder",player)
+	leaderstats.Name = "leaderstats"
+	
+	local resources = Instance.new("IntValue")
+	resources.Name = "Resources"
+	resources.Parent = leaderstats
+	resources.Value = 0
+	
+end)
