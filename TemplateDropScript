@@ -1,0 +1,16 @@
+--Place this under the Drop button under the item template.
+
+local RS = game:GetService("ReplicatedStorage")
+local DropItem = RS.DropItem
+local player = game.Players.LocalPlayer
+local amount = script.Parent.Parent.Parent.Amount
+local item = RS.Log
+local toDestroy = script.Parent.Parent.Parent
+local weight = script.Parent.Parent.Parent.Weight
+
+script.Parent.MouseButton1Click:Connect(function()
+	
+	DropItem:FireServer(amount,item,toDestroy,weight)
+	script.Parent.Parent.Parent:Destroy()
+	
+end)
