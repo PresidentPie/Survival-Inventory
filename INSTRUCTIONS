@@ -1,0 +1,20 @@
+STEP 1. Make a ScreenGUI under starterGui name it "Inventory"
+STEP 2. Insert a Frame under the ScreenGUI that we name "Inventory"
+STEP 3. Insert a Scrolling Frame under the InventoryFrame.
+STEP 4. Insert a UIGridLayout under the ScrollingFrame change cell size and cell padding to whatever you like.
+STEP 5. Insert a localscript under the ScreenGUI, Inside the localscript insert the contents of the "InventoryGUIScript"
+STEP 6. Insert a TextButton/ImageButton and name it Template or similar.
+STEP 7. Below the Template insert two IntValues, name one of them "Amount" name the other "Weight"
+STEP 8. Add a Frame into the image Button make it look like a dropdown from the image button.
+STEP 9. Add a textButton with the text "DROP" as the textButton's text.
+STEP 10. Insert a localscript below the TextButton, inside the localscript insert the contents of the "TemplateDropScript"
+STEP 11. Drag the Template into ReplicatedStorage.
+STEP 12. While in ReplicatedStorage Insert a RemoteEvent, name it "DropItem".
+STEP 13. Insert 4 scripts into ServerScriptService, inside one paste the contents of the "DropItem" script, inside another one paste the contents of the "Inventory" script, inside another one paste the contents of the "maxWeight" script, inside another one paste the contents of the "leaderstats" script.
+STEP 14. Insert a localscript into "StarterPlayer" > "StarterPlayerScripts" inside the script paste the contents of the "Encumbered" Script.
+STEP 15. Inside the Template insert a localscript, Paste the contents of the "ItemTemplateMain" script into it.
+STEP 16. Insert a part into the workspace or use a part that you've already made and want the player to be able to store in their inventory
+STEP 17. Under the part insert a "ProximityPrompt", and a script
+STEP 18. Inside the part's script paste the contents of the "ItemScript".
+
+MAKE SURE TO READ ALL INSTRUCTIONS IN EACH SCRIPT IN CASE THEY NEED EDITING!
