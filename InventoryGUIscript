@@ -1,0 +1,20 @@
+--Place this script under your screen GUI for the inventory
+
+local player = game.Players.LocalPlayer
+local Frame = script.Parent.Inventory
+local UIS = game:GetService("UserInputService")
+
+UIS.InputBegan:Connect(function(input, gameprocessedevent)
+	
+	if input.UserInputType == Enum.UserInputType.Keyboard then
+		
+		local keyPressed = input.KeyCode
+		
+		if keyPressed == Enum.KeyCode.Tab then --Change "Tab" to any key you want to open the inventory
+			print("Inventory opened")
+			Frame.Visible = not Frame.Visible
+		end
+		
+	end
+	
+end)
