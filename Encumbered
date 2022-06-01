@@ -1,0 +1,49 @@
+--Place this script in starter player scripts
+
+local player = game.Players.LocalPlayer
+local char = player.Character
+if not char or not char.parent then
+	char = player.CharacterAdded:Wait()
+end
+local maxWeight = player:WaitForChild("MaxWeight")
+local totalItems = player:WaitForChild("TotalItems")
+local UIS = game:GetService("UserInputService")
+
+UIS.InputBegan:Connect(function(input, gpe)
+	
+	if input.UserInputType == Enum.UserInputType.Keyboard then
+		
+		local keyPressed = input.KeyCode
+		
+		if keyPressed == Enum.KeyCode.W or Enum.KeyCode.A or Enum.KeyCode.S or Enum.KeyCode.D or Enum.KeyCode.Space then
+			
+			print(totalItems.Value)
+			
+			if totalItems.Value >= maxWeight.Value then
+				char:FindFirstChildOfClass("Humanoid").WalkSpeed = 0
+				char:FindFirstChildOfClass("Humanoid").JumpPower = 0
+				return
+			end
+			
+			if totalItems.Value >= maxWeight.Value - 25 then
+				char:FindFirstChildOfClass("Humanoid").WalkSpeed = 5
+				char:FindFirstChildOfClass("Humanoid").JumpPower = 15
+				return
+			end
+			
+			if totalItems.Value >= maxWeight.Value - 50 then
+				char:FindFirstChildOfClass("Humanoid").WalkSpeed = 10
+				char:FindFirstChildOfClass("Humanoid").JumpPower = 40
+				return
+			end
+			
+			if totalItems.Value <= maxWeight.Value - 51	then
+				char:FindFirstChildOfClass("Humanoid").WalkSpeed = 16
+				char:FindFirstChildOfClass("Humanoid").JumpPower = 50
+				return
+			end
+		end
+		
+	end
+	
+end)
